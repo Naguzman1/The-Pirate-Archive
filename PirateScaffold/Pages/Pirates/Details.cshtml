@@ -1,0 +1,71 @@
+@page
+@model PirateScaffold.Pages.Pirates.DetailsModel
+
+@{
+    ViewData["Title"] = "Pirate Details";
+}
+
+<h1>Pirate Details</h1>
+
+<div>
+    <h4>Pirate</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pirate.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pirate.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pirate.Epithet)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pirate.Epithet)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pirate.Age)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pirate.Age)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pirate.Bounty)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pirate.Bounty)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pirate.DevilFruit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pirate.DevilFruit)
+        </dd>
+        <hr />
+        @foreach(var c in Model.Pirate.PirateCrews)
+        {
+             <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => c.CrewName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => c.CrewName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => c.Ship)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => c.Ship)
+        </dd>
+        <dt class="col-sm-6">
+            <form method="post">
+                <input type="hidden" asp-for="PirateCrewIDToDelete" value="@c.PirateCrewID" />
+                <input type="submit" asp-page-handler="DeletePirateCrew" asp-route-id="@Model.Pirate.PirateID" value="Delete Pirate Crew" class="btn btn-danger btn-sm" />
+            </form>
+        </dt>
+        }
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Pirate?.PirateID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
