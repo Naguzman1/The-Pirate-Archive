@@ -1,3 +1,3 @@
-installed packages
-created model folder
-created dbclass, pirate class, seeddata class.
+Name: Nick Guzman
+CIDM 3312
+12/4/23

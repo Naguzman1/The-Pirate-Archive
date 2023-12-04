@@ -54,7 +54,7 @@ namespace PirateScaffold.Pages.Pirates
             
             if (PirateCrew != null)
             {
-                _context.Remove(PirateCrew); // Delete the review
+                _context.Remove(PirateCrew); // Delete the Pirate Crew
                 _context.SaveChanges();
             }
 
